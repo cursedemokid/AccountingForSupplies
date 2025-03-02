@@ -1,0 +1,86 @@
+﻿<Page x:Class="AccountingForSupplies.View.Pages.AddOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingForSupplies.View.Pages"
+      mc:Ignorable="d" 
+        d:DesignHeight="754" d:DesignWidth="1560"
+  Title="Окно добавления заказов">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="0.8*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="По категории:" >
+                    <ComboBox Name="FilterByCategoryCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="Filter_SelectionChanged"/>
+                </GroupBox>
+
+            </Grid>
+            <ListView Name="ProductsLv" Grid.Row="2" SelectionChanged="ProductsLv_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Cost, StringFormat={}{0:F2} руб.}"/>
+                        <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Category.Name}"/>
+                        <GridViewColumn Header="Изображение" DisplayMemberBinding="{Binding Category.Name}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Image}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <ListBox Name="OrderProductLb">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Product.Name}"/>
+                            <Button Name="DeleteUnitProductBtn" Grid.Column="2" Content="-" Click="DeleteUnitProductBtn_Click"/>
+                            <TextBox Name="QuantityTb" Grid.Column="4" Text="{Binding Quantity}" TextChanged="QuantityTb_TextChanged"/>
+                            <Button Name="AddUnitProductBtn" Grid.Column="6" Content="+" Click="AddUnitProductBtn_Click"/>
+                            <TextBlock Name="TotalCostTbl" Grid.Column="8" Text="{Binding TotalCost}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="AddOrderBtn" Grid.Row="2" Content="Добавить заказ" Click="AddOrderBtn_Click"/>
+        </Grid>
+    </Grid>
+</Page>
