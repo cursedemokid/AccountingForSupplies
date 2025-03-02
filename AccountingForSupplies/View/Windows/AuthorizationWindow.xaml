@@ -25,8 +25,6 @@
         <TextBlock Grid.Row="2" Text="Пароль"/>
         <TextBox Name="LoginTbx" Grid.Row="0" Grid.Column="2" />
         <PasswordBox Name="PasswordPb" Grid.Row="2" Grid.Column="2" />
-        <CheckBox Name="RememberCb" Grid.Row="4" Grid.Column="2"/>
-        <TextBlock Grid.Row="4" Text="Запомнить меня"/>
         <Button Name="EnterBtn" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" Content="Войти" Click="EnterBtn_Click"/>
     </Grid>
 </Window>

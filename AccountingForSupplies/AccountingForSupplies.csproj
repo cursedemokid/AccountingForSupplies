@@ -244,6 +244,24 @@
       <DependentUpon>Models.edmx</DependentUpon>
       <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\parker.png" />
+    <Resource Include="Resources\Images\airmax.png" />
+    <Resource Include="Resources\Images\babyTransport.png" />
+    <Resource Include="Resources\Images\bicycle.png" />
+    <Resource Include="Resources\Images\book.png" />
+    <Resource Include="Resources\Images\cofee.png" />
+    <Resource Include="Resources\Images\deWalt.png" />
+    <Resource Include="Resources\Images\diningTable.png" />
+    <Resource Include="Resources\Images\fitnessRoad.png" />
+    <Resource Include="Resources\Images\gsrBosch.png" />
+    <Resource Include="Resources\Images\laundryMachine.png" />
+    <Resource Include="Resources\Images\leatherJacket.png" />
+    <Resource Include="Resources\Images\legoCity.png" />
+    <Resource Include="Resources\Images\loreal.png" />
+    <Resource Include="Resources\Images\Refrigerator.png" />
+    <Resource Include="Resources\Images\shampoo.png" />
+    <Resource Include="Resources\Images\sofaFurniture.png" />
+    <Resource Include="Resources\Images\tea.png" />
     <Resource Include="Resources\Images\back.png" />
     <Resource Include="Resources\Images\samsung.png" />
     <Resource Include="Resources\Images\SonyHeadphones.png" />
