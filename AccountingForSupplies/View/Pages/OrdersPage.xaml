@@ -27,10 +27,10 @@
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <GroupBox Header="По статусу заказа:">
-                <ComboBox Name="FilterByOrderStatusCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="FilterByOrderStatusCmb_SelectionChanged"/>
+                <ComboBox Name="FilterByOrderStatusCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="FilterCmb_SelectionChanged"/>
             </GroupBox>
             <GroupBox Grid.Column="2" Header="По дате заказа:" >
-                <DatePicker Name="FilterByDateDp" SelectedDateChanged="FilterByDateDp_SelectedDateChanged"/>
+                <DatePicker Name="FilterByDateDp" SelectedDateChanged="FilterCmb_SelectionChanged"/>
             </GroupBox>
             <Button Name="AddEditOrderBtn" Grid.Column="6" Content="Добавить заказ" Click="AddEditOrderBtn_Click"/>
             <Button Name="DeleteOrderBtn" Grid.Column="8" Content="Удалить" Click="DeleteOrderBtn_Click"/>
@@ -41,7 +41,8 @@
                     <GridViewColumn Header="Дата создания" DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}"/>
                     <GridViewColumn Header="Номер заказа" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Статус заказа" DisplayMemberBinding="{Binding OrderStatus.Name}"/>
-                    <GridViewColumn Header="Оформил" DisplayMemberBinding="{Binding Client.FullName}"/>
+                    <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Client.FullName}"/>
+                    <GridViewColumn Header="Сотрудник" DisplayMemberBinding="{Binding Employee.FullName}"/>
                 </GridView>
             </ListView.View>
         </ListView>

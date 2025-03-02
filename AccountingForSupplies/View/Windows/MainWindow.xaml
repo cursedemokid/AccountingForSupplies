@@ -12,7 +12,7 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Frame Name="MainFrame" Grid.Row="2"/>
+        <Frame Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Image Source="/Resources/Images/logo.png" />
-            <TextBlock Grid.Column="2" Text="Учет заказов" FontSize="25" FontWeight="SemiBold"/>
+            <TextBlock Grid.Column="2" Text="Учет поставок" FontSize="25" FontWeight="SemiBold"/>
 
             <Button Name="OrdersBtn" Grid.Column="4" Content="Заказы" Click="OrdersBtn_Click"/>
             <Button Name="ProductsBtn" Grid.Column="6" Content="Товары" Click="ProductsBtn_Click"/>

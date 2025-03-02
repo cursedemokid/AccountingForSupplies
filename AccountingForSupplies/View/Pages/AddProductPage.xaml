@@ -1,0 +1,66 @@
+﻿<Page x:Class="AccountingForSupplies.View.Pages.AddProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingForSupplies.View.Pages"
+      mc:Ignorable="d" 
+                  d:DesignHeight="754" d:DesignWidth="1560"
+Title="Страница добавления товаров">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Название товара"/>
+            <TextBlock Grid.Row="2" Text="Категория"/>
+            <TextBlock Grid.Row="4" Text="Цена"/>
+            <TextBlock Grid.Row="6" Text="Изображение"/>
+            <TextBox Name="NameTbx" Grid.Row="0" Grid.Column="2"/>
+            <ComboBox Name="CategoryCmb" Grid.Row="2" Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            <TextBox Name="CostTbx" Grid.Row="4" Grid.Column="2"/>
+            <Grid Grid.Row="6" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Button Name="AddSourceBtn" Content="Добавить изображение" Click="AddSourceBtn_Click"/>
+                <TextBox Name="ImageSourceTbx" Grid.Row="2"/>
+            </Grid>
+            <Button Name="AddBtn" Grid.Row="8" Grid.ColumnSpan="3" HorizontalAlignment="Center" Content="Добавить" Click="AddBtn_Click"/>
+        </Grid>
+    </Grid>
+</Page>

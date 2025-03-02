@@ -70,6 +70,7 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -380,6 +381,7 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <NavigationProperty Name="Order" Relationship="AccountingForSuppliesModel.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="AccountingForSuppliesModel.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
         </EntityType>
@@ -519,7 +521,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -591,6 +593,7 @@
           <EntitySetMapping Name="OrderProduct">
             <EntityTypeMapping TypeName="AccountingForSuppliesModel.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingForSupplies.AppData;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,34 +22,52 @@ namespace AccountingForSupplies.View.Pages
     /// </summary>
     public partial class ProductsPage : Page
     {
+        List<Product> _products = App.context.Product.ToList();
+        List<Category> _categories = App.context.Category.ToList();
         public ProductsPage()
         {
             InitializeComponent();
-        }
 
-        private void AddEditOrderBtn_Click(object sender, RoutedEventArgs e)
-        {
+            ProductsLv.ItemsSource = _products;
+            _categories.Insert(0, new Category() { Name = "Все категории" });
 
-        }
-
-        private void DeleteOrderBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            FilterByCategoryCmb.ItemsSource = _categories;
         }
 
         private void DeleteProductBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProductsLv.SelectedItem != null)
+            {
+                if (FeedbackService.Question("Вы уверены, что хотите удалить товар из списка?") == MessageBoxResult.Yes)
+                {
+                    Product product = ProductsLv.SelectedItem as Product;
+                    App.context.Product.Remove(product);
+                    App.context.SaveChanges();
+                }
+                else
+                {
+                    ProductsLv.SelectedItem = null;
+                }
+            }
         }
 
         private void AddEditProductBtn_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AddProductPage());
+        }
+
+
+        private void ProductsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
 
-        private void NameFindTbx_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void FilterByCategoryCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Category selectedCategory = FilterByCategoryCmb.SelectedItem as Category;
+            var filteredProducts = _products.Where(p => p.Category.Name == selectedCategory.Name || selectedCategory.Name == "Все категории").ToList();
+            ProductsLv.ItemsSource = filteredProducts;
         }
     }
 }

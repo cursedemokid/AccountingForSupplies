@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingForSupplies.AppData;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,28 +22,49 @@ namespace AccountingForSupplies.View.Pages
     /// </summary>
     public partial class OrdersPage : Page
     {
+        List<Order> _orders = App.context.Order.ToList();
+        List<OrderProduct> _orderProduct = App.context.OrderProduct.ToList();
+        List<OrderStatus> _orderStatuses = App.context.OrderStatus.ToList();
         public OrdersPage()
         {
             InitializeComponent();
+
+            OrdersLv.ItemsSource = _orders;
+            _orderStatuses.Insert(0, new OrderStatus() { Name = "Все статусы" });
+            FilterByOrderStatusCmb.ItemsSource = _orderStatuses;
         }
 
-        private void FilterByOrderStatusCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void FilterCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            OrderStatus selectedOrderStatus = FilterByOrderStatusCmb.SelectedItem as OrderStatus;
+            var filteredOrders = _orders.Where(ord => (FilterByDateDp.SelectedDate == null || FilterByDateDp.SelectedDate.Value.Date == ord.Date) && (selectedOrderStatus.Name == "Все статусы" || selectedOrderStatus.Name == ord.OrderStatus.Name));
+            OrdersLv.ItemsSource = filteredOrders;
         }
 
-        private void FilterByDateDp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void AddEditOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddOrderPage());
         }
 
         private void DeleteOrderBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (FeedbackService.Question("Вы уверены, что хотите удалить заказ?") == MessageBoxResult.Yes)
+            {
+
+                Order order = OrdersLv.SelectedItem as Order;
+                foreach (OrderProduct orderProduct in _orderProduct)
+                {
+                    if (orderProduct.OrderId == order.Id)
+                    {
+                        App.context.OrderProduct.Remove(orderProduct);
+                    }
+                }
+                App.context.Order.Remove(order);
+                App.context.SaveChanges();
+                FeedbackService.Information("Заказ удален");
+            }
+
 
         }
     }

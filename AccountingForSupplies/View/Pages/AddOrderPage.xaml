@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <GroupBox Grid.Column="0" Header="По категории:" >
-                    <ComboBox Name="FilterByCategoryCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="Filter_SelectionChanged"/>
+                    <ComboBox Name="FilterByCategoryCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="FilterByCategoryCmb_SelectionChanged"/>
                 </GroupBox>
 
             </Grid>
@@ -39,10 +39,12 @@
                         <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Cost, StringFormat={}{0:F2} руб.}"/>
                         <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Category.Name}"/>
-                        <GridViewColumn Header="Изображение" DisplayMemberBinding="{Binding Category.Name}">
+                        <GridViewColumn Header="Изображение">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding Image}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" Width="100" Height="100" Margin="0,0,5,0" />
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -80,7 +82,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Name="AddOrderBtn" Grid.Row="2" Content="Добавить заказ" Click="AddOrderBtn_Click"/>
+            <Button Name="AddOrderBtn" Grid.Row="2" Content="Добавить заказ" Click="AddOrderBtn_Click" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Page>

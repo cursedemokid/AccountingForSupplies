@@ -26,19 +26,27 @@ Title="Страница заказов">
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="Поиск по названию">
-                <TextBox Name="NameFindTbx" TextChanged="NameFindTbx_TextChanged"/>
-            </GroupBox>
-            <GroupBox Grid.Column="2" Header="По дате заказа:" >
-                <DatePicker Name="FilterByDateDp" SelectedDateChanged="FilterByDateDp_SelectedDateChanged"/>
+            <GroupBox Grid.Column="0" Header="По категории" >
+                <ComboBox Name="FilterByCategoryCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="FilterByCategoryCmb_SelectionChanged"/>
             </GroupBox>
             <Button Name="AddEditProductBtn" Grid.Column="6" Content="Добавить товар" Click="AddEditProductBtn_Click"/>
             <Button Name="DeleteProductBtn" Grid.Column="8" Content="Удалить" Click="DeleteProductBtn_Click"/>
         </Grid>
-        <ListView Name="ProductsLv" Grid.Row="2">
+        <ListView Name="ProductsLv" Grid.Row="2" SelectionChanged="ProductsLv_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Дата создания" DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}"/>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Cost, StringFormat={}{0:F2} руб.}"/>
+                    <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Category.Name}"/>
+                    <GridViewColumn Header="Изображение">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" Width="100" Height="100" Margin="0,0,5,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
