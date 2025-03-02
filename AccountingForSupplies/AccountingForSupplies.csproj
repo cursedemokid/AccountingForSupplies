@@ -82,6 +82,9 @@
     <Compile Include="View\Windows\OrderAcceptWindow.xaml.cs">
       <DependentUpon>OrderAcceptWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\OrderDataWindow.xaml.cs">
+      <DependentUpon>OrderDataWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Pages\AddOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +179,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Windows\OrderAcceptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\OrderDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

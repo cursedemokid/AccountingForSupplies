@@ -10,7 +10,7 @@ Title="Страница добавления товаров">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="10" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
@@ -29,38 +29,40 @@ Title="Страница добавления товаров">
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="70" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="70" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="70" />
                 <RowDefinition Height="10" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="0" />
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="250" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Название товара"/>
-            <TextBlock Grid.Row="2" Text="Категория"/>
-            <TextBlock Grid.Row="4" Text="Цена"/>
-            <TextBlock Grid.Row="6" Text="Изображение"/>
-            <TextBox Name="NameTbx" Grid.Row="0" Grid.Column="2"/>
-            <ComboBox Name="CategoryCmb" Grid.Row="2" Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="Id"/>
-            <TextBox Name="CostTbx" Grid.Row="4" Grid.Column="2"/>
-            <Grid Grid.Row="6" Grid.Column="2">
+            <TextBlock Text="Название товара" Grid.Column="1" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="Категория" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="Цена" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="Изображение" HorizontalAlignment="Right"/>
+            <TextBox Name="NameTbx" Grid.Row="0" Grid.Column="3" Width="400" Height="50" />
+            <ComboBox Name="CategoryCmb" Grid.Row="2" Grid.Column="3" DisplayMemberPath="Name" SelectedValuePath="Id" Width="400" Height="50"/>
+            <TextBox Name="CostTbx" Grid.Row="4" Grid.Column="3" Width="400" Height="50"/>
+            <Grid Grid.Row="6" Grid.Column="3">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Button Name="AddSourceBtn" Content="Добавить изображение" Click="AddSourceBtn_Click"/>
-                <TextBox Name="ImageSourceTbx" Grid.Row="2"/>
+                <Button Name="AddSourceBtn" Grid.Row="2" Content="Добавить изображение" Click="AddSourceBtn_Click" Width="400" Height="50"/>
+                <TextBox Name="ImageSourceTbx" Width="400"  Height="50"/>
             </Grid>
-            <Button Name="AddBtn" Grid.Row="8" Grid.ColumnSpan="3" HorizontalAlignment="Center" Content="Добавить" Click="AddBtn_Click"/>
+            <Button Name="AddBtn" Grid.Row="8" Grid.Column="3" Width="400"  Height="50" Content="Добавить" Click="AddBtn_Click" />
         </Grid>
     </Grid>
 </Page>

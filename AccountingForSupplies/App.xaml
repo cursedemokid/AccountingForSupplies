@@ -38,9 +38,9 @@
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Tahoma" />
-            <Setter Property="Padding" Value="10 0" />
             <Setter Property="Height" Value="50" />
-            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="10 0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <!--#endregion-->
         <!--#region ComboBox Style-->
@@ -53,16 +53,18 @@
         <!--#endregion-->
         <!--#region GroupBox Style-->
         <Style TargetType="GroupBox">
-            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Tahoma" />
             <Setter Property="BorderThickness" Value="0" />
         </Style>
         <!--#endregion-->
         <!--#region DatePicker Style-->
         <Style TargetType="DatePicker">
-            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Tahoma" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            
         </Style>
         <!--#endregion-->
     </Application.Resources>

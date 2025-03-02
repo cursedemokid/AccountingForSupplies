@@ -44,23 +44,31 @@ namespace AccountingForSupplies.View.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (CostTbx.Text != null && NameTbx.Text != null && CategoryCmb.SelectedItem != null)
             {
-                Product product = new Product()
+
+                try
                 {
-                    Name = NameTbx.Text,
-                    CategoryId = Convert.ToInt32(CategoryCmb.SelectedValue),
-                    Cost = Convert.ToDecimal(CostTbx.Text),
-                    Image = ImageSourceTbx.Text,
-                };
-                App.context.Product.Add(product);
-                App.context.SaveChanges();
-                FeedbackService.Information("Товар успешно добавлен!");
-                ClearText();
+                    Product product = new Product()
+                    {
+                        Name = NameTbx.Text,
+                        CategoryId = Convert.ToInt32(CategoryCmb.SelectedValue),
+                        Cost = Convert.ToDecimal(CostTbx.Text),
+                        Image = ImageSourceTbx.Text,
+                    };
+                    App.context.Product.Add(product);
+                    App.context.SaveChanges();
+                    FeedbackService.Information("Товар успешно добавлен!");
+                    ClearText();
+                }
+                catch (Exception ex)
+                {
+                    FeedbackService.Error(ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                FeedbackService.Error(ex);
+                FeedbackService.Warning("Не все обязательные поля заполнены! Заполните все обязательные поля и повторите попытку");
             }
         }
 
@@ -69,6 +77,7 @@ namespace AccountingForSupplies.View.Pages
             CostTbx.Text = string.Empty;
             ImageSourceTbx.Text = string.Empty;
             NameTbx.Text = string.Empty;
+            CategoryCmb.SelectedItem = null;
         }
     }
 }

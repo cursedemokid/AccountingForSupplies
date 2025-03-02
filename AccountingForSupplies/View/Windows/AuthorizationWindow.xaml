@@ -12,8 +12,6 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="10" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,10 +19,10 @@
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Text="Логин"/>
-        <TextBlock Grid.Row="2" Text="Пароль"/>
+        <TextBlock Grid.Row="0" Text="Логин" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="2" Text="Пароль" HorizontalAlignment="Right"/>
         <TextBox Name="LoginTbx" Grid.Row="0" Grid.Column="2" />
         <PasswordBox Name="PasswordPb" Grid.Row="2" Grid.Column="2" />
-        <Button Name="EnterBtn" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" Content="Войти" Click="EnterBtn_Click"/>
+        <Button Name="EnterBtn" Grid.Row="6" Grid.Column="2" Content="Войти" Click="EnterBtn_Click"/>
     </Grid>
 </Window>

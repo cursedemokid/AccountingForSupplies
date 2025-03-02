@@ -30,7 +30,7 @@ namespace AccountingForSupplies.View.Windows
 
         private void AcceptOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(AddressTbx.Text) != true || ClientCmb.SelectedItem != null)
+            if (string.IsNullOrEmpty(AddressTbx.Text) != true || ClientCmb.SelectedValue != null)
             {
 
                 Order order = new Order()
@@ -42,8 +42,10 @@ namespace AccountingForSupplies.View.Windows
                     OrderStatusId = 1
                 };
                 App.context.Order.Add(order);
+                App.context.SaveChanges();
                 DialogResult = true;
             }
+            else
             {
                 FeedbackService.Warning("не все поля запонены! Заполните все поля и повторите попытку");
             }

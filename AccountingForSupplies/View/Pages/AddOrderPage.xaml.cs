@@ -51,7 +51,7 @@ namespace AccountingForSupplies.View.Pages
             }
             else
             {
-                FeedbackService.Warning("Количество товара не может быть равно 0");
+                FeedbackService.Warning("Количество товара не может быть меньше 0");
                 orderProduct.Quantity = 0;
             }
         }
@@ -69,9 +69,9 @@ namespace AccountingForSupplies.View.Pages
             orderProduct.TotalCost = orderProduct.Product.Cost * orderProduct.Quantity;
             Grid grid = button.Parent as Grid;
             TextBox textBox = grid.Children.OfType<TextBox>().FirstOrDefault(tB => tB.Name == "QuantityTb");
-                TextBlock textBlock = grid.Children.OfType<TextBlock>().FirstOrDefault(tBl => tBl.Name == "TotalCostTbl");
-                textBox.Text = orderProduct.Quantity.ToString();
-                textBlock.Text = orderProduct.TotalCost.ToString();
+            TextBlock textBlock = grid.Children.OfType<TextBlock>().FirstOrDefault(tBl => tBl.Name == "TotalCostTbl");
+            textBox.Text = orderProduct.Quantity.ToString();
+            textBlock.Text = orderProduct.TotalCost.ToString();
         }
 
         private void ProductsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -94,22 +94,30 @@ namespace AccountingForSupplies.View.Pages
 
         private void AddOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            OrderAcceptWindow orderAcceptWindow = new OrderAcceptWindow();
-            if(orderAcceptWindow.ShowDialog() == true)
+            try
             {
-                foreach (OrderProduct orderProduct in OrderProductLb.Items)
+
+                OrderAcceptWindow orderAcceptWindow = new OrderAcceptWindow();
+                if (orderAcceptWindow.ShowDialog() == true)
                 {
-                    if(orderProduct.Quantity != 0)
+                    foreach (OrderProduct orderProduct in OrderProductLb.Items)
                     {
-                        App.context.OrderProduct.Add(orderProduct);
+                        if (orderProduct.Quantity != 0)
+                        {
+                            App.context.OrderProduct.Add(orderProduct);
+                        }
                     }
+                    FeedbackService.Information("Заказ успешно добавлен");
+                    App.context.SaveChanges();
                 }
-                FeedbackService.Information("Заказ успешно добавлен");
-                App.context.SaveChanges();
+                else
+                {
+                    FeedbackService.Error("Заказ не был создан");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                FeedbackService.Error("Заказ не был создан");
+                FeedbackService.Error(ex.Message);
             }
         }
 

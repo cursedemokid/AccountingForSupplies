@@ -82,7 +82,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Name="AddOrderBtn" Grid.Row="2" Content="Добавить заказ" Click="AddOrderBtn_Click" VerticalAlignment="Bottom"/>
+            <Button Name="AddOrderBtn" Grid.Row="2" Content="Добавить заказ" Click="AddOrderBtn_Click" VerticalAlignment="Bottom" Height="50"/>
         </Grid>
     </Grid>
 </Page>

@@ -32,10 +32,14 @@ namespace AccountingForSupplies.View.Windows
             if (_employees.FirstOrDefault(em => em.Password == PasswordPb.Password && em.Login == LoginTbx.Text) != null)
             {
                 App.CurrentEmployee = _employees.FirstOrDefault(em => em.Password == PasswordPb.Password && em.Login == LoginTbx.Text);
-                FeedbackService.Information($"Добро пожаловать {App.CurrentEmployee.FullName}");
+                FeedbackService.Information($"Добро пожаловать, {App.CurrentEmployee.FullName}!");
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Close();
+            }
+            else
+            {
+                FeedbackService.Error("Такого пользователя не найдено");
             }
         }
     }

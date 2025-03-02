@@ -1,4 +1,5 @@
 ﻿using AccountingForSupplies.AppData;
+using AccountingForSupplies.View.Windows;
 
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,20 @@ namespace AccountingForSupplies.View.Pages
             }
 
 
+        }
+
+        private void OrderDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Order order = OrdersLv.SelectedItem as Order;
+            if (order != null)
+            {
+                OrderDataWindow orderDataWindow = new OrderDataWindow(order);
+                orderDataWindow.ShowDialog();
+            }
+            else
+            {
+                FeedbackService.Warning("Вы не выбрали заказ! Выберите заказ в списке и повторите попытку");
+            }
         }
     }
 }

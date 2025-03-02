@@ -25,20 +25,23 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <GroupBox Header="По статусу заказа:">
                 <ComboBox Name="FilterByOrderStatusCmb" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedIndex="0" SelectionChanged="FilterCmb_SelectionChanged"/>
             </GroupBox>
             <GroupBox Grid.Column="2" Header="По дате заказа:" >
-                <DatePicker Name="FilterByDateDp" SelectedDateChanged="FilterCmb_SelectionChanged"/>
+                <DatePicker Name="FilterByDateDp" SelectedDateChanged="FilterCmb_SelectionChanged" Height="50" Width="270"/>
             </GroupBox>
-            <Button Name="AddEditOrderBtn" Grid.Column="6" Content="Добавить заказ" Click="AddEditOrderBtn_Click"/>
-            <Button Name="DeleteOrderBtn" Grid.Column="8" Content="Удалить" Click="DeleteOrderBtn_Click"/>
+            <Button Name="OrderDataBtn" Grid.Column="6" Content="Данные о заказе" Click="OrderDataBtn_Click"/>
+            <Button Name="AddEditOrderBtn" Grid.Column="8" Content="Добавить заказ" Click="AddEditOrderBtn_Click"/>
+            <Button Name="DeleteOrderBtn" Grid.Column="10" Content="Удалить" Click="DeleteOrderBtn_Click"/>
         </Grid>
         <ListView Name="OrdersLv" Grid.Row="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Дата создания" DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}"/>
+                    <GridViewColumn Header="Дата создания" DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy}"/>
                     <GridViewColumn Header="Номер заказа" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Статус заказа" DisplayMemberBinding="{Binding OrderStatus.Name}"/>
                     <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Client.FullName}"/>
