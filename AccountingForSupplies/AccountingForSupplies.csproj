@@ -82,11 +82,17 @@
     <Compile Include="View\Pages\BasePage.xaml.cs">
       <DependentUpon>BasePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\CityPage.xaml.cs">
+      <DependentUpon>CityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AddEditCityWindow.xaml.cs">
+      <DependentUpon>AddEditCityWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\AddEditClientWindow.xaml.cs">
       <DependentUpon>AddEditClientWindow.xaml</DependentUpon>
@@ -112,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\CityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\ProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AddEditCityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

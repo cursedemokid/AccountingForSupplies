@@ -39,7 +39,7 @@ namespace AccountingForSupplies.View.Pages
 
         private void CityBtn_Click(object sender, RoutedEventArgs e)
         {
-            AdministratorFrame.Navigate(new EmployeePage());
+            AdministratorFrame.Navigate(new CityPage());
         }
 
         private void CompanyBtn_Click(object sender, RoutedEventArgs e)

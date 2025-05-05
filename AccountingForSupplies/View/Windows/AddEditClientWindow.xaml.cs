@@ -28,6 +28,7 @@ namespace AccountingForSupplies.View.Windows
             InitializeComponent();
 
             CompanyCmb.ItemsSource = App.context.Company.ToList();
+            AcceptBtn.Visibility = Visibility.Collapsed;
         }
 
         public AddEditClientWindow(int id)
@@ -38,6 +39,7 @@ namespace AccountingForSupplies.View.Windows
             CompanyCmb.ItemsSource = App.context.Company.ToList();
             CompanyCmb.SelectedValue = client.CompanyId;
             MainGrid.DataContext = client;
+            AddBtn.Visibility = Visibility.Collapsed;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -58,7 +60,6 @@ namespace AccountingForSupplies.View.Windows
                 App.context.SaveChanges();
                 DialogResult = true;
                 Close();
-                FeedbackService.Error("Сотрудник с таким логином уже существует! Поменяйте логин и попробуйте заново");
             }
             catch (Exception ex)
             {
