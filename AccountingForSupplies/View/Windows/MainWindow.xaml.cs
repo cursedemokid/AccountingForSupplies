@@ -1,4 +1,5 @@
-﻿using AccountingForSupplies.View.Pages;
+﻿using AccountingForSupplies.AppData;
+using AccountingForSupplies.View.Pages;
 
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace AccountingForSupplies
         public MainWindow()
         {
             InitializeComponent();
+
+            
         }
 
         private void OrdersBtn_Click(object sender, RoutedEventArgs e)
@@ -35,6 +38,18 @@ namespace AccountingForSupplies
         private void ProductsBtn_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ProductsPage());
+        }
+
+        private void BaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.CurrentEmployee.PositionId != 3)
+            {
+                FeedbackService.Error("У Вас недостаточно прав для открытия этой страницы!");
+            }
+            else
+            {
+                MainFrame.Navigate(new BasePage());
+            }
         }
     }
 }

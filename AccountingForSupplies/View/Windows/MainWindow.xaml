@@ -30,6 +30,7 @@
 
             <Button Name="OrdersBtn" Grid.Column="4" Content="Заказы" Click="OrdersBtn_Click"/>
             <Button Name="ProductsBtn" Grid.Column="6" Content="Товары" Click="ProductsBtn_Click"/>
+            <Button Name="BaseBtn" Grid.Column="8" Content="Справочник" Click="BaseBtn_Click"/>
         </Grid>
     </Grid>
 </Window>
