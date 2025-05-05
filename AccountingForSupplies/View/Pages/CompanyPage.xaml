@@ -1,0 +1,43 @@
+﻿<Page x:Class="AccountingForSupplies.View.Pages.CompanyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingForSupplies.View.Pages"
+      mc:Ignorable="d" 
+                  d:DesignHeight="684" d:DesignWidth="1560"
+Title="EmployeePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button Name="AddCompanyBtn" Grid.Column="0" Content="Добавить" Click="AddCompanyBtn_Click"/>
+            <Button Name="EditCompanyBtn" Grid.Column="2" Content="Изменить" Click="EditCompanyBtn_Click"/>
+            <Button Name="DeleteCompanyBtn" Grid.Column="4" Content="Удалить" Click="DeleteCompanyBtn_Click"/>
+            <TextBlock Grid.Column="6" Text="Поиск" Margin="150,0,0,0"/>
+            <TextBox Name="SearchByNameTbx" Grid.Column="8" Height="50" TextChanged="SearchByNameTbx_TextChanged"/>
+        </Grid>
+        <ListView Name="CompanyLV" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Компания" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

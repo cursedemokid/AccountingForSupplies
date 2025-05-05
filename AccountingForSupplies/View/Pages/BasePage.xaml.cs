@@ -44,7 +44,7 @@ namespace AccountingForSupplies.View.Pages
 
         private void CompanyBtn_Click(object sender, RoutedEventArgs e)
         {
-            AdministratorFrame.Navigate(new EmployeePage());
+            AdministratorFrame.Navigate(new CompanyPage());
         }
     }
 }
