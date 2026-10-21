@@ -1,4 +1,5 @@
-﻿using AccountingForSupplies.AppData;
+﻿using ProjectSecurity;
+using AccountingForSupplies.AppData;
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace AccountingForSupplies.View.Windows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        List<Employee> _employees = App.context.Employee.ToList();
+
         public AuthorizationWindow()
         {
             InitializeComponent();
@@ -29,9 +30,10 @@ namespace AccountingForSupplies.View.Windows
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (_employees.FirstOrDefault(em => em.Password == PasswordPb.Password && em.Login == LoginTbx.Text) != null)
+            var employee = App.context.Employee.FirstOrDefault(em => em.Login == LoginTbx.Text);
+            if (employee != null && PasswordSecurity.Verify(PasswordPb.Password, employee.Password))
             {
-                App.CurrentEmployee = _employees.FirstOrDefault(em => em.Password == PasswordPb.Password && em.Login == LoginTbx.Text);
+                App.CurrentEmployee = employee;
                 FeedbackService.Information($"Добро пожаловать, {App.CurrentEmployee.FullName}!");
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

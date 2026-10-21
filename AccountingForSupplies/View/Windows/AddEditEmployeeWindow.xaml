@@ -31,7 +31,7 @@
         <TextBox Name="FirstNameTbx" Grid.Column="2" Grid.Row="2" Text="{Binding FirstName}"/>
         <TextBox Name="MiddleNameTbx" Grid.Column="2" Grid.Row="4" Text="{Binding MiddleName}"/>
         <TextBox Name="LoginTbx" Grid.Column="2" Grid.Row="6" Text="{Binding Login}"/>
-        <TextBox Name="PasswordTbx" Grid.Column="2" Grid.Row="8" Text="{Binding Password}"/>
+        <TextBox Name="PasswordTbx" Grid.Column="2" Grid.Row="8"/>
         <ComboBox Name="PositionCmb" Grid.Column="2" Grid.Row="10" DisplayMemberPath="Name" SelectedValuePath="Id"/>
         <Button Name="AcceptBtn" Grid.Row="12" Content="Сохранить" Click="AcceptBtn_Click"/>
         <Button Name="AddBtn" Grid.Row="12" Content="Добавить" Click="AddBtn_Click"/>

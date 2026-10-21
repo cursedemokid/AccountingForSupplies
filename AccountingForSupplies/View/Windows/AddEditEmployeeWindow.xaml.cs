@@ -1,4 +1,5 @@
-﻿using AccountingForSupplies.AppData;
+﻿using ProjectSecurity;
+using AccountingForSupplies.AppData;
 
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,8 @@ namespace AccountingForSupplies.View.Windows
                 selectedEmployee.FirstName = FirstNameTbx.Text;
                 selectedEmployee.MiddleName = MiddleNameTbx.Text;
                 selectedEmployee.Login = LoginTbx.Text;
-                selectedEmployee.Password = PasswordTbx.Text;
+                if (!string.IsNullOrEmpty(PasswordTbx.Text))
+                    selectedEmployee.Password = PasswordSecurity.Hash(PasswordTbx.Text);
                 selectedEmployee.PositionId = Convert.ToInt32(PositionCmb.SelectedValue);
 
                 App.context.SaveChanges();
@@ -79,7 +81,7 @@ namespace AccountingForSupplies.View.Windows
                     FirstName = FirstNameTbx.Text,
                     MiddleName = MiddleNameTbx.Text,
                     Login = LoginTbx.Text,
-                    Password = PasswordTbx.Text,
+                    Password = PasswordSecurity.Hash(PasswordTbx.Text),
                     PositionId = Convert.ToInt32(PositionCmb.SelectedValue),
                 };
 
